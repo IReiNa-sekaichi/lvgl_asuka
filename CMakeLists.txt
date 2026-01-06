@@ -281,7 +281,8 @@ endif()
 
 
 file(GLOB LV_LINUX_SRC src/lib/*.c)
-file(GLOB LV_APP_SRC src/app/*.c)
+file(GLOB_RECURSE LV_APP_SRC src/app/*.c)
+list(FILTER LV_APP_SRC EXCLUDE REGEX "/template_app/")
 set(LV_LINUX_INC src/lib)
 
 target_include_directories(lvgl PUBLIC ${PKG_CONFIG_INC})

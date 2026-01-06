@@ -32,20 +32,22 @@ modifying the following definitions, setting them to `1` or `0`
 
 ### Graphics drivers
 
-| Definition         | Description                             |
-| ------------------ | ----------------------------------------|
-| LV_USE_LINUX_FBDEV | Legacy frame buffer (/dev/fb*)          |
-| LV_USE_LINUX_DRM   | DRM/KMS (/dev/dri/*)                    |
-| LV_USE_SDL         | SDL                                     |
-| LV_USE_WAYLAND     | WAYLAND                                 |
-| LV_USE_X11         | X11                                     |
-| LV_USE_GLFW        | GLFW3                                   |
+
+| Definition         | Description                    |
+| ------------------ | ------------------------------ |
+| LV_USE_LINUX_FBDEV | Legacy frame buffer (/dev/fb*) |
+| LV_USE_LINUX_DRM   | DRM/KMS (/dev/dri/*)           |
+| LV_USE_SDL         | SDL                            |
+| LV_USE_WAYLAND     | WAYLAND                        |
+| LV_USE_X11         | X11                            |
+| LV_USE_GLFW        | GLFW3                          |
 
 ### Device drivers
 
-| Definition         | Description                             |
-| ------------------ | ----------------------------------------|
-| LV_USE_EVDEV       | libevdev input devices                  |
+
+| Definition   | Description            |
+| ------------ | ---------------------- |
+| LV_USE_EVDEV | libevdev input devices |
 
 ## Install dependencies
 
@@ -95,6 +97,7 @@ cmake --install ./build
 ```
 ./build/bin/lvglsim
 ```
+
 This will start the widgets demo
 
 If multiple backends are enabled you can run with a specific backend via the `-b` option
@@ -105,17 +108,14 @@ If multiple backends are enabled you can run with a specific backend via the `-b
 
 To get a list of supported backends use the `-B` option
 
-
 ## Environment variables
 
 Environment variables can be set to modify the behavior of the driver(s)
 Check the documentation of the drivers for more details
 
-
 ### Legacy framebuffer (fbdev)
 
 - `LV_LINUX_FBDEV_DEVICE` - override default (`/dev/fb0`) framebuffer device node.
-
 
 ### EVDEV touchscreen/mouse pointer device
 
@@ -131,7 +131,6 @@ Check the documentation of the drivers for more details
 
 - `LV_SIM_WINDOW_WIDTH` - width of the window (default `800`).
 - `LV_SIM_WINDOW_HEIGHT` - height of the window (default `480`).
-
 
 ## Permissions
 
@@ -171,3 +170,11 @@ After the choices are made the helper also runs `cmake -B build/<platform>-<app>
 with the correct toolchain, so `m`/`mclean` become shortcuts for `cmake --build`.
 Use the `LVGL_EXTRA_CMAKE_ARGS` environment variable if you need to pass additional
 CMake options before sourcing `envsetup.sh`.
+
+
+## Add App
+
+scripts/new_app.sh my_app "My custom LVGL app"
+source envsetup.sh
+lunch host-sdl my_app
+m
